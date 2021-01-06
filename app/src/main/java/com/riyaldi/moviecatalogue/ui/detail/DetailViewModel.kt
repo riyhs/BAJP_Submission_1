@@ -7,7 +7,7 @@ import com.riyaldi.moviecatalogue.utils.DataDummy
 class DetailViewModel: ViewModel() {
     private lateinit var film: MovieEntity
 
-    fun setFilm(id: String,category: String) {
+    fun setFilm(id: String, category: String) {
         when (category) {
             "tvShow" -> {
                 for (tvShow in DataDummy.getTvShows()) {
