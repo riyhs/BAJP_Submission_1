@@ -11,17 +11,13 @@ class DetailViewModel: ViewModel() {
         when (category) {
             "tvShow" -> {
                 for (tvShow in DataDummy.getTvShows()) {
-                    if (tvShow.id == id) {
-                        film = tvShow
-                    }
+                    if (tvShow.id == id) film = tvShow
                 }
             }
 
             "movie" -> {
                 for (movie in DataDummy.getMovies()) {
-                    if (movie.id == id) {
-                        film = movie
-                    }
+                    if (movie.id == id) film = movie
                 }
             }
         }

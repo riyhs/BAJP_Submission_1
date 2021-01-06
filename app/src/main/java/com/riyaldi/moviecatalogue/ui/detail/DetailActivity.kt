@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
+import com.google.android.material.appbar.AppBarLayout
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ActivityDetailBinding
+import kotlin.math.abs
 
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener {
 
     companion object {
         const val EXTRA_FILM = "extra_film"
@@ -19,6 +21,9 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private lateinit var detailBinding: ActivityDetailBinding
+    private val percentageToShowImage = 20
+    private var mMaxScrollSize = 0
+    private var mIsImageHidden = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +33,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         detailBinding.toolbar.setNavigationOnClickListener { onBackPressed() }
+        detailBinding.appbar.addOnOffsetChangedListener(this)
 
         val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
 
@@ -66,6 +72,24 @@ class DetailActivity : AppCompatActivity() {
                 palette?.getDarkMutedColor(defValue) ?: defValue
             )
             window.statusBarColor = palette?.getDarkMutedColor(defValue) ?: defValue
+        }
+    }
+
+    override fun onOffsetChanged(appBarLayout: AppBarLayout?, verticalOffset: Int) {
+        if (mMaxScrollSize == 0) mMaxScrollSize = appBarLayout!!.totalScrollRange
+
+        val currentScrollPercentage: Int = (abs(verticalOffset) * 100 / mMaxScrollSize)
+
+        if (currentScrollPercentage >= percentageToShowImage) {
+            if (!mIsImageHidden) {
+                mIsImageHidden = true
+            }
+        }
+
+        if (currentScrollPercentage < percentageToShowImage) {
+            if (mIsImageHidden) {
+                mIsImageHidden = false
+            }
         }
     }
 }
