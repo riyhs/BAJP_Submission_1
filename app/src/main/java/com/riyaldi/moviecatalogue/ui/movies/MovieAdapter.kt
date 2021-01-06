@@ -1,11 +1,15 @@
 package com.riyaldi.moviecatalogue.ui.movies
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ItemMovieBinding
+
 
 class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
@@ -32,8 +36,18 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         fun bind(movie: MovieEntity) {
             with(binding) {
                 tvTitle.text = movie.title
+                tvGenre.text = movie.genre
+
+                val bitmap = BitmapFactory.decodeResource(itemView.context.resources, movie.poster)
+
+                Palette.from(bitmap).generate { palette ->
+                    val defValue = 0xf8f8f8
+                    cardItem.setCardBackgroundColor(palette?.getDarkMutedColor(defValue) ?: defValue)
+                }
+
                 Glide.with(itemView.context)
                         .load(movie.poster)
+                        .transform(RoundedCorners(28))
                         .into(ivPoster)
             }
         }
