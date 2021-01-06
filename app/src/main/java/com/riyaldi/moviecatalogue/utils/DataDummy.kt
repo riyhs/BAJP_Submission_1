@@ -4,8 +4,8 @@ import com.riyaldi.moviecatalogue.R
 import com.riyaldi.moviecatalogue.data.MovieEntity
 
 object DataDummy {
-    fun getMovies(): List<MovieEntity> {
-        return listOf(
+    fun getMovies(): ArrayList<MovieEntity> {
+        return arrayListOf(
             MovieEntity(
                 "movie1",
                 "Alita: Battle Angel",
@@ -89,8 +89,8 @@ object DataDummy {
         )
     }
 
-    fun getTvShows(): List<MovieEntity> {
-        return listOf(
+    fun getTvShows(): ArrayList<MovieEntity> {
+        return arrayListOf(
             MovieEntity(
                 "tv1",
                 "Arrow",
