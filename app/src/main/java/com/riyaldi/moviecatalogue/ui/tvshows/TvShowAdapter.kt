@@ -1,7 +1,7 @@
 package com.riyaldi.moviecatalogue.ui.tvshows
 
+import android.content.Intent
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.palette.graphics.Palette
@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ItemMovieBinding
+import com.riyaldi.moviecatalogue.ui.detail.DetailActivity
 
 class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
     private var tvShows = ArrayList<MovieEntity>()
@@ -42,8 +43,14 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 Palette.from(bitmap).generate { palette ->
                     val defValue = 0x000000
                     cardItem.setCardBackgroundColor(palette?.getDarkMutedColor(defValue) ?: defValue)
+                }
 
-                    Log.d("PALET", "${tvShow.title} == ${palette?.getDarkVibrantColor(defValue)}")
+                itemView.setOnClickListener {
+                    val intent = Intent(itemView.context, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.EXTRA_FILM, tvShow.id)
+                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
+
+                    itemView.context.startActivity(intent)
                 }
 
                 Glide.with(binding.root.context)
