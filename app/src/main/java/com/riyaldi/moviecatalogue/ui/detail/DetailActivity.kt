@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ActivityDetailBinding
 
+
 class DetailActivity : AppCompatActivity() {
 
     companion object {
@@ -25,6 +26,8 @@ class DetailActivity : AppCompatActivity() {
         setContentView(detailBinding.root)
 
         supportActionBar?.hide()
+
+        detailBinding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
 
@@ -56,8 +59,12 @@ class DetailActivity : AppCompatActivity() {
 
         Palette.from(bitmap).generate { palette ->
             val defValue = 0xffffff
-            detailBinding.cardDetail.setCardBackgroundColor(palette?.getDarkMutedColor(defValue) ?: defValue)
-            detailBinding.collapsing.setContentScrimColor(palette?.getDarkMutedColor(defValue) ?: defValue)
+            detailBinding.cardDetail.setCardBackgroundColor(
+                palette?.getDarkMutedColor(defValue) ?: defValue
+            )
+            detailBinding.collapsing.setContentScrimColor(
+                palette?.getDarkMutedColor(defValue) ?: defValue
+            )
             window.statusBarColor = palette?.getDarkMutedColor(defValue) ?: defValue
         }
     }
