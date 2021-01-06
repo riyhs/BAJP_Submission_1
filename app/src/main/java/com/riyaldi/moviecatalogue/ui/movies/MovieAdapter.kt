@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ItemMovieBinding
 
-class MovieFragmentAdapter: RecyclerView.Adapter<MovieFragmentAdapter.MovieViewHolder>() {
+class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     private var movies = ArrayList<MovieEntity>()
 

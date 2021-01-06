@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.riyaldi.moviecatalogue.databinding.FragmentMovieBinding
-import com.riyaldi.moviecatalogue.utils.DataDummy
 
 class MovieFragment : Fragment() {
 
@@ -25,7 +24,7 @@ class MovieFragment : Fragment() {
             val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MovieViewModel::class.java]
             val movies = viewModel.getMovies()
 
-            val movieAdapter = MovieFragmentAdapter()
+            val movieAdapter = MovieAdapter()
             movieAdapter.setMovies(movies)
 
             with(fragmentMovieBinding.rvMovies) {
