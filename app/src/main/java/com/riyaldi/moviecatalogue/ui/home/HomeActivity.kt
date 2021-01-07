@@ -13,6 +13,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        setViewPager()
+    }
+
+    private fun setViewPager() {
         val fragmentList = listOf(MovieFragment(), TvShowFragment())
         val tabName = listOf("Movie", "Tv Show")
 
@@ -20,6 +24,5 @@ class HomeActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout2, viewpager){tab, position ->
             tab.text = tabName[position]
         }.attach()
-
     }
 }
