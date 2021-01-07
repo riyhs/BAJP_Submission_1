@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/poster_alita"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/poster" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -38,7 +38,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Alita : Battle Angel"
+            android:text="@string/film_title"
             android:textColor="@android:color/primary_text_dark"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="TextView"
+            android:text="@string/genre"
             android:textColor="@android:color/primary_text_dark"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"

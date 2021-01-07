@@ -1,10 +1,10 @@
 package com.riyaldi.moviecatalogue.ui.detail
 
 import com.riyaldi.moviecatalogue.utils.DataDummy
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class DetailViewModelTest {
 
