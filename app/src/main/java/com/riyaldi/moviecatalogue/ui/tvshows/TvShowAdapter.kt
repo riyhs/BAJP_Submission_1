@@ -38,10 +38,15 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 tvTitle.text = tvShow.title
                 tvGenre.text = tvShow.genre
 
+                Glide.with(binding.root.context)
+                    .load(tvShow.poster)
+                    .transform(RoundedCorners(28))
+                    .into(ivPoster)
+
                 val bitmap = BitmapFactory.decodeResource(itemView.context.resources, tvShow.poster)
 
                 Palette.from(bitmap).generate { palette ->
-                    val defValue = 0x000000
+                    val defValue = 0xf8f8f8
                     cardItem.setCardBackgroundColor(palette?.getDarkMutedColor(defValue) ?: defValue)
                 }
 
@@ -52,11 +57,6 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
                     itemView.context.startActivity(intent)
                 }
-
-                Glide.with(binding.root.context)
-                        .load(tvShow.poster)
-                        .transform(RoundedCorners(28))
-                        .into(ivPoster)
             }
         }
     }

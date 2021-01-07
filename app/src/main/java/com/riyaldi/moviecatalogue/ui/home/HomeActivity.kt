@@ -18,11 +18,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setViewPager() {
         val fragmentList = listOf(MovieFragment(), TvShowFragment())
-        val tabName = listOf("Movie", "Tv Show")
+        val tabTitle = listOf("Movie", "Tv Show")
 
         viewpager.adapter = ViewpagerAdapter(fragmentList, this.supportFragmentManager, lifecycle)
+
         TabLayoutMediator(tabLayout2, viewpager){tab, position ->
-            tab.text = tabName[position]
+            tab.text = tabTitle[position]
         }.attach()
     }
 }

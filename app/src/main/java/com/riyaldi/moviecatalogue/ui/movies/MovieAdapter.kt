@@ -40,6 +40,11 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                 tvTitle.text = movie.title
                 tvGenre.text = movie.genre
 
+                Glide.with(itemView.context)
+                    .load(movie.poster)
+                    .transform(RoundedCorners(28))
+                    .into(ivPoster)
+
                 val bitmap = BitmapFactory.decodeResource(itemView.context.resources, movie.poster)
 
                 Palette.from(bitmap).generate { palette ->
@@ -54,11 +59,6 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
                     itemView.context.startActivity(intent)
                 }
-
-                Glide.with(itemView.context)
-                        .load(movie.poster)
-                        .transform(RoundedCorners(28))
-                        .into(ivPoster)
             }
         }
     }

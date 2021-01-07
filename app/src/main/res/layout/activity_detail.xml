@@ -30,12 +30,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/poster_alita"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/image_front_shadow"/>
+                android:src="@drawable/image_front_shadow"
+                tools:ignore="ContentDescription" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
