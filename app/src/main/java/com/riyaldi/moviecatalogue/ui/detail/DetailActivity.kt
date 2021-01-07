@@ -61,6 +61,8 @@ class DetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener
             .load(data.poster)
             .into(detailBinding.ivDetail)
 
+        detailBinding.ivDetail.tag = data.poster
+
         val bitmap = BitmapFactory.decodeResource(resources, data.poster)
 
         Palette.from(bitmap).generate { palette ->
