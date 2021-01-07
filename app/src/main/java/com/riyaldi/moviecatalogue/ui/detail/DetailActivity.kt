@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
+import com.riyaldi.moviecatalogue.R
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ActivityDetailBinding
 import kotlin.math.abs
@@ -63,10 +64,14 @@ class DetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener
 
         detailBinding.ivDetail.tag = data.poster
 
-        val bitmap = BitmapFactory.decodeResource(resources, data.poster)
+        setColorByPalette(data.poster)
+    }
+
+    private fun setColorByPalette(poster: Int) {
+        val bitmap = BitmapFactory.decodeResource(resources, poster)
 
         Palette.from(bitmap).generate { palette ->
-            val defValue = 0xffffff
+            val defValue = resources.getColor(R.color.dark, theme)
             detailBinding.cardDetail.setCardBackgroundColor(
                 palette?.getDarkMutedColor(defValue) ?: defValue
             )

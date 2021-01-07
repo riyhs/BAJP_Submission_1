@@ -8,6 +8,7 @@ import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.riyaldi.moviecatalogue.R
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ItemMovieBinding
 import com.riyaldi.moviecatalogue.ui.detail.DetailActivity
@@ -46,7 +47,7 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 val bitmap = BitmapFactory.decodeResource(itemView.context.resources, tvShow.poster)
 
                 Palette.from(bitmap).generate { palette ->
-                    val defValue = 0xf8f8f8
+                    val defValue = itemView.resources.getColor(R.color.dark, itemView.context.theme)
                     cardItem.setCardBackgroundColor(palette?.getDarkMutedColor(defValue) ?: defValue)
                 }
 
