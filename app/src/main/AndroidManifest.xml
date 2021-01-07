@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.riyaldi.moviecatalogue" >
+    package="com.riyaldi.moviecatalogue">
 
     <application
         android:allowBackup="false"
@@ -10,15 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue"
-        tools:ignore="GoogleAppIndexingWarning" >
-        <activity android:name=".ui.detail.DetailActivity" >
-        </activity>
-        <activity android:name=".ui.home.HomeActivity" >
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.splashscreen.SplashActivity"
+            android:theme="@style/SplashScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.detail.DetailActivity"
+            android:theme="@style/Theme.MovieCatalogue"/>
+        <activity android:name=".ui.home.HomeActivity"
+            android:theme="@style/Theme.MovieCatalogue">
         </activity>
     </application>
 
