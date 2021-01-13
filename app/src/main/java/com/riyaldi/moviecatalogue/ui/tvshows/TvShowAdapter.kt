@@ -12,12 +12,13 @@ import com.riyaldi.moviecatalogue.R
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ItemMovieBinding
 import com.riyaldi.moviecatalogue.ui.detail.DetailActivity
+import com.riyaldi.moviecatalogue.ui.detail.DetailViewModel.Companion.TV_SHOW
 
 class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
     private var tvShows = ArrayList<MovieEntity>()
 
     fun setTvShows(tvShows: ArrayList<MovieEntity>?) {
-        if (tvShows == null) return
+        if (tvShows.isNullOrEmpty()) return
         this.tvShows.clear()
         this.tvShows.addAll(tvShows)
     }
@@ -54,7 +55,7 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
                     intent.putExtra(DetailActivity.EXTRA_FILM, tvShow.id)
-                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
+                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, TV_SHOW)
 
                     itemView.context.startActivity(intent)
                 }

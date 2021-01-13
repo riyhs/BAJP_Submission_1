@@ -12,6 +12,7 @@ import com.riyaldi.moviecatalogue.R
 import com.riyaldi.moviecatalogue.data.MovieEntity
 import com.riyaldi.moviecatalogue.databinding.ItemMovieBinding
 import com.riyaldi.moviecatalogue.ui.detail.DetailActivity
+import com.riyaldi.moviecatalogue.ui.detail.DetailViewModel.Companion.MOVIE
 
 
 class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -19,7 +20,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     private var movies = ArrayList<MovieEntity>()
 
     fun setMovies(movies: ArrayList<MovieEntity>?){
-        if (movies == null) return
+        if (movies.isNullOrEmpty()) return
         this.movies.clear()
         this.movies.addAll(movies)
     }
@@ -56,7 +57,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
                     intent.putExtra(DetailActivity.EXTRA_FILM, movie.id)
-                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, "movie")
+                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, MOVIE)
 
                     itemView.context.startActivity(intent)
                 }

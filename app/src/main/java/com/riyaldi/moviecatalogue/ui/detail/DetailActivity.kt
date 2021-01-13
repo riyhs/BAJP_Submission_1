@@ -1,6 +1,5 @@
 package com.riyaldi.moviecatalogue.ui.detail
 
-import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -52,9 +51,8 @@ class DetailActivity : AppCompatActivity(), AppBarLayout.OnOffsetChangedListener
 
     }
 
-    @SuppressLint("SetTextI18n")
     private fun populateDataDetail(data: MovieEntity) {
-        detailBinding.tvDetailGenreDuration.text = "${data.genre} | ${data.duration}"
+        detailBinding.tvDetailGenreDuration.text = StringBuilder("${data.genre} | ${data.duration}")
         detailBinding.collapsing.title = data.title
         detailBinding.tvDetailOverview.text = data.overview
 
